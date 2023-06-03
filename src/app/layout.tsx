@@ -1,20 +1,20 @@
-import { Figtree } from "next/font/google";
+import { Figtree } from 'next/font/google'
 
-import "./globals.css";
+import './globals.css'
 
-const font = Figtree({ subsets: ["latin"] });
+const font = Figtree({ subsets: ['latin'] })
 
 export const metadata = {
-  title: "Spotify Clone",
-  description: "Listen to music!",
-};
+  title: 'Spotify Clone',
+  description: 'Listen to music!',
+}
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body className={font.className}>{children}</body>
     </html>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout
