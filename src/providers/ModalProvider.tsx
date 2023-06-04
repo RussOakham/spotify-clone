@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
+import AuthModal from '@/components/Modal/AuthModal'
+
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false)
 
@@ -11,7 +13,7 @@ const ModalProvider = () => {
 
   if (!isMounted) return null
 
-  return <div>ModalProvider</div>
+  return <AuthModal />
 }
 
 export default ModalProvider
