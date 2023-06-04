@@ -1,6 +1,7 @@
 import { Figtree } from 'next/font/google'
 
 import Sidebar from '@/components/Sidebar/Sidebar'
+import SupabaseProvider from '@/providers/SupabaseProvider'
 
 import './globals.css'
 
@@ -15,7 +16,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body className={font.className}>
-        <Sidebar>{children}</Sidebar>
+        <SupabaseProvider>
+          <Sidebar>{children}</Sidebar>
+        </SupabaseProvider>
       </body>
     </html>
   )
