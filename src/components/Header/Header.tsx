@@ -1,5 +1,6 @@
 'use client'
 
+import toast from 'react-hot-toast'
 import { BiSearch } from 'react-icons/bi'
 import { FaUserAlt } from 'react-icons/fa'
 import { HiHome } from 'react-icons/hi'
@@ -30,7 +31,9 @@ const Header = ({ children, className }: HeaderProps) => {
     router.refresh()
 
     if (error) {
-      console.error(error)
+      toast.error(error.message)
+    } else {
+      toast.success('Logged out successfully!')
     }
   }
 
