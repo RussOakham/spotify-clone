@@ -1,5 +1,6 @@
 import { Figtree } from 'next/font/google'
 
+import getSongsByUserId from '@/actions/getSongsByUserId'
 import Sidebar from '@/components/Sidebar/Sidebar'
 import ModalProvider from '@/providers/ModalProvider'
 import SupabaseProvider from '@/providers/SupabaseProvider'
@@ -15,7 +16,11 @@ export const metadata = {
   description: 'Listen to music!',
 }
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export const revalidate = 0
+
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+  const userSongs = await getSongsByUserId()
+
   return (
     <html lang="en">
       <body className={font.className}>
@@ -23,7 +28,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <SupabaseProvider>
           <UserProvider>
             <ModalProvider />
-            <Sidebar>{children}</Sidebar>
+            <Sidebar songs={userSongs}>{children}</Sidebar>
           </UserProvider>
         </SupabaseProvider>
       </body>
