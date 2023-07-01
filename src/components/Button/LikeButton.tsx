@@ -26,7 +26,7 @@ const LikeButton = ({ songId }: LikeButtonProps) => {
 
     const fetchData = async () => {
       const { data, error } = await supabaseClient
-        .from('likes')
+        .from('liked_songs')
         .select('*')
         .eq('user_id', user.id)
         .eq('song_id', songId)

@@ -7,7 +7,7 @@ import LikedContent from './components/LikedContent'
 
 export const revalidate = 0
 
-const Liked = async () => {
+const Liked: React.FC = async () => {
   const songs = await getLikedSongs()
 
   return (
