@@ -3,22 +3,32 @@ import { cookies } from 'next/headers'
 
 import { Song } from '@/types'
 
-const getSongs = async (): Promise<Song[]> => {
+const getLikedSongs = async (): Promise<Song[]> => {
   const supabase = createServerComponentClient({
     cookies,
   })
 
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
+
   const { data, error } = await supabase
-    .from('songs')
-    .select('*')
+    .from('liked_songs')
+    .select('*, songs(*)')
+    .eq('user_id', session?.user.id)
     .order('created_at', { ascending: false })
 
   if (error) {
     // eslint-disable-next-line no-console
     console.log(error)
+    return []
   }
 
-  return (data as Song[]) || []
+  if (!data) {
+    return []
+  }
+
+  return data.map((item) => ({ ...(item.songs as Song) })) as Song[]
 }
 
-export default getSongs
+export default getLikedSongs
