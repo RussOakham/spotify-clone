@@ -6,7 +6,7 @@ import PageContent from './components/PageContent'
 
 export const revalidate = 0
 
-const Home = async () => {
+const Home: React.FC = async () => {
   const songs = await getSongs()
 
   return (

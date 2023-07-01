@@ -24,7 +24,7 @@ interface SongFormValues {
   song?: FileList
 }
 
-const UploadModal = () => {
+const UploadModal: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false)
   const uploadModal = useUploadModal()
   const { user } = useUser()

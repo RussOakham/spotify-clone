@@ -1,6 +1,6 @@
 import { FaPlay } from 'react-icons/fa'
 
-const PlayButton = () => {
+const PlayButton: React.FC = () => {
   return (
     <button
       type="button"

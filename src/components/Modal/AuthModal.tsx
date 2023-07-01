@@ -13,7 +13,7 @@ import useAuthModal from '@/hooks/useAuthModal'
 
 import Modal from './Modal'
 
-const AuthModal = () => {
+const AuthModal: React.FC = () => {
   const supabaseClient = useSupabaseClient()
   const router = useRouter()
   const { session } = useSessionContext()
