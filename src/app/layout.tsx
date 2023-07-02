@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { Figtree } from 'next/font/google'
 
 import getActiveProductsWithPrices from '@/actions/getActiveProductsWithPrices'
@@ -35,6 +36,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
             <Player />
           </UserProvider>
         </SupabaseProvider>
+        <Analytics />
       </body>
     </html>
   )
