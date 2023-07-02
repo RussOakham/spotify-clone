@@ -17,10 +17,10 @@ export async function POST() {
 
     if (!user) throw new Error('User not found')
 
-    const customer = await createOrRetrieveCustomer(
-      user?.email ?? '',
-      user?.id ?? ''
-    )
+    const customer = await createOrRetrieveCustomer({
+      email: user.email ?? '',
+      uuid: user.id ?? '',
+    })
 
     if (!customer) throw new Error('Customer not found')
 

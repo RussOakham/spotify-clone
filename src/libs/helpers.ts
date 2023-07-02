@@ -12,7 +12,17 @@ export const getURL = () => {
   return url
 }
 
-export const postData = async (url: string, data?: { price: Price }) => {
+interface CheckoutSessionResponse {
+  sessionId: string
+}
+
+export const postData = async ({
+  url,
+  data,
+}: {
+  url: string
+  data?: { price: Price }
+}) => {
   console.log('POST REQUEST', url, data)
 
   const res: Response = await fetch(url, {
@@ -29,7 +39,7 @@ export const postData = async (url: string, data?: { price: Price }) => {
     throw new Error(res.statusText)
   }
 
-  return res.json()
+  return res.json() as Promise<CheckoutSessionResponse>
 }
 
 export const toDateTime = (secs: number) => {

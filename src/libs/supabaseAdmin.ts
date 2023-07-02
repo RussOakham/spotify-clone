@@ -56,7 +56,13 @@ const upsertPriceRecord = async (price: Stripe.Price) => {
   console.log('Price inserted/updated', priceData)
 }
 
-const createOrRetrieveCustomer = async (email: string, uuid: string) => {
+const createOrRetrieveCustomer = async ({
+  email,
+  uuid,
+}: {
+  email: string
+  uuid: string
+}) => {
   const { data, error } = await supabaseAdmin
     .from('customers')
     .select('stripe_customer_id')

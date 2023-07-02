@@ -3,8 +3,6 @@
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-hot-toast'
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { DevTool } from '@hookform/devtools'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useRouter } from 'next/navigation'
 import uniqid from 'uniqid'
@@ -31,7 +29,7 @@ const UploadModal: React.FC = () => {
   const supabaseClient = useSupabaseClient()
   const router = useRouter()
 
-  const { control, register, handleSubmit, reset } = useForm<SongFormValues>({
+  const { register, handleSubmit, reset } = useForm<SongFormValues>({
     defaultValues: {
       author: '',
       title: '',
@@ -163,7 +161,6 @@ const UploadModal: React.FC = () => {
           Create
         </Button>
       </form>
-      <DevTool control={control} />
     </Modal>
   )
 }

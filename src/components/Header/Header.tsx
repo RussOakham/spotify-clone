@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import { twMerge } from 'tailwind-merge'
 
 import useAuthModal from '@/hooks/useAuthModal'
+import usePlayer from '@/hooks/usePlayer'
 import { useUser } from '@/hooks/useUser'
 
 import Button from '../Button/Button'
@@ -21,13 +22,14 @@ interface HeaderProps {
 
 const Header = ({ children, className }: HeaderProps) => {
   const router = useRouter()
+  const player = usePlayer()
   const { onOpen } = useAuthModal()
   const supabaseClient = useSupabaseClient()
   const { user } = useUser()
 
   const handleLogout = async () => {
     const { error } = await supabaseClient.auth.signOut()
-    // TODO: Reset any playing songs
+    player.reset()
     router.refresh()
 
     if (error) {

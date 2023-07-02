@@ -24,10 +24,10 @@ export async function POST(request: CheckoutRequest) {
     const {
       data: { user },
     } = await supabase.auth.getUser()
-    const customer = await createOrRetrieveCustomer(
-      user?.email ?? '',
-      user?.id ?? ''
-    )
+    const customer = await createOrRetrieveCustomer({
+      email: user?.email ?? '',
+      uuid: user?.id ?? '',
+    })
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
