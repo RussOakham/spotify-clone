@@ -1,8 +1,11 @@
+import { ErrorBoundary } from 'react-error-boundary'
+
 import getSongsByTitle from '@/actions/getSongsByTitle'
 import SearchInput from '@/components/Form/SearchInput'
 import Header from '@/components/Header/Header'
 
 import SearchContent from './components/SearchContent'
+import ErrorFallback from './error'
 
 interface SearchProps {
   searchParams: {
@@ -23,7 +26,9 @@ const Search = async ({ searchParams }: SearchProps) => {
           <SearchInput />
         </div>
       </Header>
-      <SearchContent songs={songs} />
+      <ErrorBoundary fallback={<ErrorFallback />}>
+        <SearchContent songs={songs} />
+      </ErrorBoundary>
     </div>
   )
 }

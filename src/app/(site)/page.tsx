@@ -1,8 +1,11 @@
+import { ErrorBoundary } from 'react-error-boundary'
+
 import getSongs from '@/actions/getSongs'
 import Header from '@/components/Header/Header'
 import ListItem from '@/components/ListItem/ListItem'
 
 import PageContent from './components/PageContent'
+import ErrorFallback from './error'
 
 export const revalidate = 0
 
@@ -28,7 +31,9 @@ const Home: React.FC = async () => {
           <h2 className="text-2xl font-semibold text-white">Newest songs</h2>
         </div>
         <div>
-          <PageContent songs={songs} />
+          <ErrorBoundary fallback={<ErrorFallback />}>
+            <PageContent songs={songs} />
+          </ErrorBoundary>{' '}
         </div>
       </div>
     </div>

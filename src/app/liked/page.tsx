@@ -1,9 +1,11 @@
+import { ErrorBoundary } from 'react-error-boundary'
 import Image from 'next/image'
 
 import getLikedSongs from '@/actions/getLikedSongs'
 import Header from '@/components/Header/Header'
 
 import LikedContent from './components/LikedContent'
+import ErrorFallback from './error'
 
 export const revalidate = 0
 
@@ -33,7 +35,9 @@ const Liked: React.FC = async () => {
           </div>
         </div>
       </Header>
-      <LikedContent songs={songs} />
+      <ErrorBoundary fallback={<ErrorFallback />}>
+        <LikedContent songs={songs} />
+      </ErrorBoundary>
     </div>
   )
 }
