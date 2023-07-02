@@ -14,6 +14,7 @@ export const getURL = () => {
 
 interface CheckoutSessionResponse {
   sessionId: string
+  url: string
 }
 
 export const postData = async ({

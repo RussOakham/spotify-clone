@@ -1,7 +1,7 @@
 'use client'
 
 import LikeButton from '@/components/Button/LikeButton'
-import MediaItem from '@/components/MediaItem.tsx/MediaItem'
+import MediaItem from '@/components/MediaItem/MediaItem'
 import useOnPlay from '@/hooks/useOnPlay'
 import { Song } from '@/types'
 

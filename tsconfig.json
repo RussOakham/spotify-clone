@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".eslint.cjs"
-  ],
+, "src/components/MediaItem"  ],
   "exclude": ["node_modules"]
 }

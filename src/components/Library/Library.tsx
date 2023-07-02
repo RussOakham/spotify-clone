@@ -10,7 +10,7 @@ import useUploadModal from '@/hooks/useUploadModal'
 import { useUser } from '@/hooks/useUser'
 import { Song } from '@/types'
 
-import MediaItem from '../MediaItem.tsx/MediaItem'
+import MediaItem from '../MediaItem/MediaItem'
 
 interface LibraryProps {
   songs: Song[]

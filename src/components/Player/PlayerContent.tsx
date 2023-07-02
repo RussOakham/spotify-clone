@@ -10,7 +10,7 @@ import usePlayer from '@/hooks/usePlayer'
 import { Song } from '@/types'
 
 import LikeButton from '../Button/LikeButton'
-import MediaItem from '../MediaItem.tsx/MediaItem'
+import MediaItem from '../MediaItem/MediaItem'
 import Slider from '../Slider/Slider'
 
 interface PlayerContentProps {
