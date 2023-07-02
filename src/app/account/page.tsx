@@ -1,6 +1,11 @@
+import { Suspense } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+
 import Header from '@/components/Header/Header'
 
 import AccountContent from './components/AccountContent'
+import ErrorFallback from './error'
+import Loading from './loading'
 
 const page = () => {
   return (
@@ -12,7 +17,11 @@ const page = () => {
           </h1>
         </div>
       </Header>
-      <AccountContent />
+      <ErrorBoundary fallback={<ErrorFallback />}>
+        <Suspense fallback={<Loading />}>
+          <AccountContent />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   )
 }
