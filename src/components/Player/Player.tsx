@@ -10,6 +10,7 @@ const Player: React.FC = () => {
   const player = usePlayer()
   const { song } = useGetSongById(player.activeId)
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const songUrl = useLoadSongUrl(song!)
 
   if (!song || !songUrl || !player.activeId) return null

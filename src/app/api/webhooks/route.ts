@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable consistent-return */
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
@@ -21,9 +22,9 @@ const relevantEvents = new Set([
   'customer.subscription.deleted',
 ])
 
-async function POST(request: Request) {
+export async function POST(request: Request) {
   const body = await request.text()
-  const sig = headers().get('stripe-signature') ?? ''
+  const sig = headers().get('Stripe-Signature')
 
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET ?? ''
   let event: Stripe.Event
@@ -89,5 +90,3 @@ async function POST(request: Request) {
 
   return NextResponse.json({ received: true }, { status: 200 })
 }
-
-export default POST
